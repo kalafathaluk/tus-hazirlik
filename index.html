@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUS Asistanım v8.1 - Hata Giderici</title>
+    <title>TUS Asistanım v8.2 - Haluk Kalafat</title>
     <style>
-        :root { --primary: #2c3e50; --secondary: #3498db; --bg: #f5f6fa; --text: #2f3640; --success: #2ecc71; --danger: #e74c3c; --warning: #f1c40f; }
+        :root { --primary: #2c3e50; --secondary: #3498db; --bg: #f5f6fa; --text: #2f3640; --success: #2ecc71; --danger: #e74c3c; --warning: #f1c40f; --profile-bg: #ecf0f1;}
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg); color: var(--text); padding-bottom: 50px; }
         header { background-color: var(--primary); color: white; text-align: center; padding: 1.2rem; font-size: 1.4rem; font-weight: bold; }
+        
+        /* Profil Kısmı */
+        #profileAlani { background-color: var(--profile-bg); padding: 15px; border-bottom: 2px solid var(--secondary); text-align: center;}
+        #profileAlani h2 { margin: 0; color: var(--primary); font-size: 1.5rem;}
+        #profileAlani p { margin: 5px 0 0; color: #7f8c8d; font-size: 0.9rem;}
+        #profileDönem { font-weight: bold; color: var(--secondary);}
+
         .tabs { display: flex; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .tab-btn { flex: 1; padding: 15px; border: none; background: none; cursor: pointer; font-weight: bold; color: #7f8c8d; border-bottom: 3px solid transparent; }
         .tab-btn.active { color: var(--secondary); border-bottom-color: var(--secondary); }
@@ -29,68 +36,27 @@
         .gun-ust-kisim strong { font-size: 1.1rem; }
         .gun-ust-kisim select { width: auto; margin: 0; padding: 5px 10px; }
 
-        /* İlerleme Grid ve Kart Düzeni (Taşma Sorunu Çözümü) */
-        .progress-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Min-max değeri 300'den 280'e çekildi */
-            gap: 20px; 
-        }
-        .ders-card { 
-            background: white; 
-            padding: 15px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            border-top: 5px solid var(--primary);
-            box-sizing: border-box; /* Padding'in genişliğe dahil olmasını sağlar */
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Fasikül Listesi Container'ı */
-        .fasikul-listesi {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            margin-top: 5px;
-            /* Taşan kısımları kart içinde kaydırılabilir yapmak için: */
-            max-height: 250px; 
-            overflow-y: auto; 
-            padding-right: 5px;
-        }
-
-        .fasikul-item { 
-            display: flex; 
-            align-items: center; 
-            background: #f8f9fa; 
-            padding: 8px 12px; /* İç boşluklar daraltıldı */
-            border-radius: 6px; 
-            border: 1px solid #eee; 
-            cursor: pointer; 
-            word-break: break-word; /* Uzun metinlerin satır atlamasını sağlar */
-        }
-        
-        .fasikul-item input[type="checkbox"] {
-            width: auto;
-            margin: 0 10px 0 0; /* Input etrafındaki marginler standardize edildi */
-            flex-shrink: 0; /* Checkbox'ın ezilmesini önler */
-        }
-
+        .progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .ders-card { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); }
+        .fasikul-item { display: flex; align-items: center; background: #f8f9fa; padding: 8px; border-radius: 6px; margin-top: 5px; border: 1px solid #eee; cursor: pointer; }
         .fasikul-item.completed { background-color: #e8f8f5; color: #27ae60; text-decoration: line-through; border-color: #2ecc71; }
-
-        /* Kaydırma çubuğu tasarımı (İsteğe bağlı, daha şık görünmesi için) */
-        .fasikul-listesi::-webkit-scrollbar { width: 6px; }
-        .fasikul-listesi::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
-        .fasikul-listesi::-webkit-scrollbar-thumb { background: #bdc3c7; border-radius: 4px; }
-        .fasikul-listesi::-webkit-scrollbar-thumb:hover { background: #95a5a6; }
 
         .timer-container { text-align: center; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         .timer-display { font-size: 5rem; font-weight: bold; margin: 10px 0; font-family: monospace; }
         .sync-area { margin-top: 40px; padding: 20px; background: #ecf0f1; border-radius: 12px; text-align: center; border: 2px dashed #bdc3c7; }
+        
+        /* Geliştirici İmzası */
+        .attribution-area { margin-top: 15px; text-align: center; font-size: 0.8rem; color: #7f8c8d;}
     </style>
 </head>
 <body>
 
-    <header>TUS Asistanım v8.1</header>
+    <header>TUS Asistanım v8.2 - Haluk Kalafat Sürümü</header>
+
+    <div id="profileAlani">
+        <h2>Haluk Kalafat</h2>
+        <p><span id="profileDönem">5. Sınıf TUS Asistanı - Özel Sürüm</span> (<span id="profileTarih"></span>)</p>
+    </div>
 
     <div class="tabs">
         <button class="tab-btn active" onclick="openTab('program', this)">📅 Program</button>
@@ -132,6 +98,9 @@
             <h4>🔄 Veri Aktarımı</h4>
             <button class="btn-gray" onclick="veriyiDisariAktar()">Veri Kodunu Kopyala</button>
             <button class="btn-blue" style="margin-top: 8px;" onclick="veriyiIceriAktar()">Kod Yapıştır ve Yükle</button>
+        </div>
+        <div class="attribution-area">
+            <strong>Haluk Kalafat Tarafından Tasarlandı ve Geliştirildi</strong>
         </div>
     </div>
 
@@ -202,7 +171,7 @@
             const gunIsimleri = ["Cumartesi", "Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma"];
             let tempDate = new Date(haftaKey);
 
-            gunIsimleri.forEach((g, index) => {
+            gun Isimleri.forEach((g, index) => {
                 let d = new Date(tempDate);
                 d.setDate(d.getDate() + index);
                 let tarihStr = d.toLocaleDateString('tr-TR', {day:'numeric', month:'long'});
@@ -220,13 +189,16 @@
         function haftayiYukle() {
             const haftaKey = document.getElementById('haftaSec').value;
             const gorunum = document.getElementById('haftalikGorunum');
+            const profildate = document.getElementById('profileTarih'); // Profil tarih alanı
             
             if(!ajandaVerisi[haftaKey]) {
                 gorunum.innerHTML = `<div style="text-align:center; padding:20px; color:#7f8c8d;">Bu hafta için henüz bir program oluşturulmadı. Yukarıdan ders seçip "Taslak Oluştur" diyebilirsiniz.</div>`;
+                profildate.innerText = "Hafta Seçilmedi";
                 return;
             }
 
             const veri = ajandaVerisi[haftaKey];
+            profildate.innerText = document.getElementById('haftaSec').options[document.getElementById('haftaSec').selectedIndex].text; // Profil tarihini güncelle
             let html = `<h3 style="color:var(--secondary)">${veri.anaDers} Haftası</h3>`;
             
             for(let gun in veri.gunler) {
@@ -257,7 +229,7 @@
             kaydet();
         }
 
-        // --- İLERLEME SEKMESİ (GÜNCELLENMİŞ HTML) ---
+        // --- İLERLEME SEKMESİ ---
         function renderIlerleme() {
             const container = document.getElementById('dersIlerlemeleri');
             container.innerHTML = '';
@@ -280,8 +252,7 @@
             const mod = document.getElementById(id + '-mod').value;
             const detay = document.getElementById(id + '-detay');
             if(mod === 'fasikul') {
-                // liste class'ı eklendi
-                detay.innerHTML = `<input type="number" placeholder="Fasikül Sayısı" onchange="fasikulUret('${id}', this.value)"><div id="${id}-liste" class="fasikul-listesi"></div>`;
+                detay.innerHTML = `<input type="number" placeholder="Fasikül Sayısı" onchange="fasikulUret('${id}', this.value)"><div id="${id}-liste"></div>`;
             } else if(mod === 'sayfa') {
                 detay.innerHTML = `<label>Kaldığın Sayfa:</label><input type="number" placeholder="Sayfa No" oninput="kaydet()">`;
             } else { detay.innerHTML = ''; }
@@ -305,7 +276,7 @@
             kaydet();
         }
 
-        // --- AKILLI KRONOMETRE ---
+        // --- AKILLI KRONOMETRE & MOLA ---
         let timer, calisiyor = false, molaModu = false, saniye = 0, dakikalar = 50, toplamSaniye = 0;
 
         function updateTimerButtons() {
