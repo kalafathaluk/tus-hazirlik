@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUS Asistanım v8 - Ajanda Modu</title>
+    <title>TUS Asistanım v8.1 - Hata Giderici</title>
     <style>
         :root { --primary: #2c3e50; --secondary: #3498db; --bg: #f5f6fa; --text: #2f3640; --success: #2ecc71; --danger: #e74c3c; --warning: #f1c40f; }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg); color: var(--text); padding-bottom: 50px; }
@@ -29,10 +29,59 @@
         .gun-ust-kisim strong { font-size: 1.1rem; }
         .gun-ust-kisim select { width: auto; margin: 0; padding: 5px 10px; }
 
-        .progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .ders-card { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); }
-        .fasikul-item { display: flex; align-items: center; background: #f8f9fa; padding: 8px; border-radius: 6px; margin-top: 5px; border: 1px solid #eee; cursor: pointer; }
+        /* İlerleme Grid ve Kart Düzeni (Taşma Sorunu Çözümü) */
+        .progress-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Min-max değeri 300'den 280'e çekildi */
+            gap: 20px; 
+        }
+        .ders-card { 
+            background: white; 
+            padding: 15px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            border-top: 5px solid var(--primary);
+            box-sizing: border-box; /* Padding'in genişliğe dahil olmasını sağlar */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Fasikül Listesi Container'ı */
+        .fasikul-listesi {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 5px;
+            /* Taşan kısımları kart içinde kaydırılabilir yapmak için: */
+            max-height: 250px; 
+            overflow-y: auto; 
+            padding-right: 5px;
+        }
+
+        .fasikul-item { 
+            display: flex; 
+            align-items: center; 
+            background: #f8f9fa; 
+            padding: 8px 12px; /* İç boşluklar daraltıldı */
+            border-radius: 6px; 
+            border: 1px solid #eee; 
+            cursor: pointer; 
+            word-break: break-word; /* Uzun metinlerin satır atlamasını sağlar */
+        }
+        
+        .fasikul-item input[type="checkbox"] {
+            width: auto;
+            margin: 0 10px 0 0; /* Input etrafındaki marginler standardize edildi */
+            flex-shrink: 0; /* Checkbox'ın ezilmesini önler */
+        }
+
         .fasikul-item.completed { background-color: #e8f8f5; color: #27ae60; text-decoration: line-through; border-color: #2ecc71; }
+
+        /* Kaydırma çubuğu tasarımı (İsteğe bağlı, daha şık görünmesi için) */
+        .fasikul-listesi::-webkit-scrollbar { width: 6px; }
+        .fasikul-listesi::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        .fasikul-listesi::-webkit-scrollbar-thumb { background: #bdc3c7; border-radius: 4px; }
+        .fasikul-listesi::-webkit-scrollbar-thumb:hover { background: #95a5a6; }
 
         .timer-container { text-align: center; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         .timer-display { font-size: 5rem; font-weight: bold; margin: 10px 0; font-family: monospace; }
@@ -41,7 +90,7 @@
 </head>
 <body>
 
-    <header>TUS Asistanım v8</header>
+    <header>TUS Asistanım v8.1</header>
 
     <div class="tabs">
         <button class="tab-btn active" onclick="openTab('program', this)">📅 Program</button>
@@ -208,7 +257,7 @@
             kaydet();
         }
 
-        // --- İLERLEME SEKMESİ ---
+        // --- İLERLEME SEKMESİ (GÜNCELLENMİŞ HTML) ---
         function renderIlerleme() {
             const container = document.getElementById('dersIlerlemeleri');
             container.innerHTML = '';
@@ -231,7 +280,8 @@
             const mod = document.getElementById(id + '-mod').value;
             const detay = document.getElementById(id + '-detay');
             if(mod === 'fasikul') {
-                detay.innerHTML = `<input type="number" placeholder="Fasikül Sayısı" onchange="fasikulUret('${id}', this.value)"><div id="${id}-liste"></div>`;
+                // liste class'ı eklendi
+                detay.innerHTML = `<input type="number" placeholder="Fasikül Sayısı" onchange="fasikulUret('${id}', this.value)"><div id="${id}-liste" class="fasikul-listesi"></div>`;
             } else if(mod === 'sayfa') {
                 detay.innerHTML = `<label>Kaldığın Sayfa:</label><input type="number" placeholder="Sayfa No" oninput="kaydet()">`;
             } else { detay.innerHTML = ''; }
