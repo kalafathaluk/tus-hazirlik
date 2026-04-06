@@ -1,0 +1,7 @@
+cd /path/to/your/files
+git init
+git add .
+git commit -m "TUS Hazırlık Uygulaması - Pomodoro ve Firebase"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/tus-hazirlik-plani.git
+git push -u origin main
