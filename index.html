@@ -3,178 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUS Asistanım v3</title>
+    <title>TUS Asistanım v4</title>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --bg: #f5f6fa;
-            --text: #2f3640;
-            --success: #2ecc71;
-            --card-bg: #ffffff;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--text);
-        }
-        header {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 1.2rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .tabs {
-            display: flex;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .tab-btn {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #7f8c8d;
-            border-bottom: 3px solid transparent;
-            transition: 0.3s;
-        }
-        .tab-btn.active {
-            color: var(--secondary);
-            border-bottom-color: var(--secondary);
-        }
-        .tab-content {
-            display: none;
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        /* Form Elements */
-        select, input[type="number"], input[type="text"], button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #bdc3c7;
-            border-radius: 5px;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-        button:hover { background-color: #2980b9; }
-        
-        /* Tab 1: Haftalık Program */
-        .hafta-form {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-        .hafta-gun-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            padding: 12px 15px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            border-left: 5px solid var(--secondary);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .hafta-gun-card select {
-            width: auto;
-            margin: 0;
-            padding: 8px;
-            background-color: #f8f9fa;
-        }
-        
-        /* Tab 2: İlerleme (3'lü Grid) */
-        .progress-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-        .ders-card {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-top: 4px solid var(--primary);
-        }
-        .ders-card h4 {
-            margin: 0 0 15px 0;
-            font-size: 1.1rem;
-            border-bottom: 1px solid #ecf0f1;
-            padding-bottom: 10px;
-        }
-        .fasikul-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .fasikul-item {
-            display: flex;
-            align-items: center;
-            background: #f8f9fa;
-            padding: 8px 12px;
-            border-radius: 5px;
-            border: 1px solid #ecf0f1;
-            cursor: pointer;
-        }
-        .fasikul-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin: 0 10px 0 0;
-            cursor: pointer;
-        }
-        .fasikul-item.completed {
-            background-color: #e8f8f5;
-            text-decoration: line-through;
-            color: #7f8c8d;
-        }
-
-        /* Tab 3: Kronometre */
-        .timer-display {
-            font-size: 5rem;
-            text-align: center;
-            font-weight: bold;
-            margin: 30px 0;
-            color: var(--primary);
-            font-variant-numeric: tabular-nums;
-        }
-        .timer-controls { display: flex; gap: 10px; }
-        .btn-start { background-color: var(--success); }
-        .btn-stop { background-color: #e74c3c; }
-        .total-time {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 1.2rem;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            border: 2px dashed var(--secondary);
-        }
+        :root { --primary: #2c3e50; --secondary: #3498db; --bg: #f5f6fa; --text: #2f3640; --success: #2ecc71; --card-bg: #ffffff; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg); color: var(--text); padding-bottom: 50px; }
+        header { background-color: var(--primary); color: white; text-align: center; padding: 1.2rem; font-size: 1.4rem; font-weight: bold; }
+        .tabs { display: flex; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .tab-btn { flex: 1; padding: 15px; border: none; background: none; cursor: pointer; font-weight: bold; color: #7f8c8d; border-bottom: 3px solid transparent; }
+        .tab-btn.active { color: var(--secondary); border-bottom-color: var(--secondary); }
+        .tab-content { display: none; padding: 20px; max-width: 900px; margin: 0 auto; }
+        .tab-content.active { display: block; }
+        select, input, button { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #bdc3c7; border-radius: 5px; box-sizing: border-box; }
+        button { background-color: var(--secondary); color: white; border: none; cursor: pointer; font-weight: bold; }
+        .hafta-gun-card { display: flex; justify-content: space-between; align-items: center; background: white; padding: 10px; margin-bottom: 8px; border-radius: 5px; border-left: 5px solid var(--secondary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .hafta-gun-card select { width: auto; margin: 0; }
+        .progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .ders-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-top: 4px solid var(--primary); }
+        .fasikul-item { display: flex; align-items: center; background: #f8f9fa; padding: 8px; border-radius: 5px; margin-top: 5px; cursor: pointer; }
+        .fasikul-item.completed { background-color: #e8f8f5; text-decoration: line-through; color: #7f8c8d; }
+        .timer-display { font-size: 4rem; text-align: center; font-weight: bold; margin: 20px 0; color: var(--primary); }
+        .sync-area { margin-top: 30px; padding: 20px; background: #dfe6e9; border-radius: 8px; text-align: center; }
     </style>
 </head>
 <body>
@@ -182,295 +30,188 @@
     <header>TUS Asistanım</header>
 
     <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('program', this)">📅 Haftalık Program</button>
+        <button class="tab-btn active" onclick="openTab('program', this)">📅 Program</button>
         <button class="tab-btn" onclick="openTab('ilerleme', this)">✅ İlerleme</button>
-        <button class="tab-btn" onclick="openTab('kronometre', this)">⏱️ Çalışma Modu</button>
+        <button class="tab-btn" onclick="openTab('kronometre', this)">⏱️ Çalışma</button>
     </div>
 
     <div id="program" class="tab-content active">
-        <div class="hafta-form">
-            <h3>Haftalık Şablon Oluştur</h3>
-            <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: -10px;">4 Nisan 2026 itibariyle haftanı seç, ana görevini ata ve günleri aşağıdan özelleştir.</p>
-            
-            <select id="haftaSec"></select> <select id="haftalikDers">
-                <option value="Anatomi">💀 Anatomi</option>
-                <option value="Fizyoloji-Histo-Embriyo">🔬 Fizyoloji - Histo - Embriyo</option>
-                <option value="Biyokimya">🧪 Biyokimya</option>
-                <option value="Mikrobiyoloji">🦠 Mikrobiyoloji</option>
-                <option value="Patoloji">🩸 Patoloji</option>
-                <option value="Farmakoloji">💊 Farmakoloji</option>
-                <option value="Dahiliye">🩺 Dahiliye</option>
-                <option value="Pediatri">👶 Pediatri</option>
-                <option value="Genel Cerrahi">🔪 Genel Cerrahi</option>
-                <option value="Kadın Doğum">🤰 Kadın Hastalıkları ve Doğum</option>
-                <option value="Küçük Stajlar">👁️ Küçük Stajlar</option>
+        <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <h3>Haftalık Plan (4 Nisan Başlangıçlı)</h3>
+            <select id="haftaSec"></select>
+            <select id="haftalikDers">
+                <option value="💀 Anatomi">💀 Anatomi</option>
+                <option value="🔬 Fizyoloji-Histo-Embriyo">🔬 Fizyoloji</option>
+                <option value="🧪 Biyokimya">🧪 Biyokimya</option>
+                <option value="🦠 Mikrobiyoloji">🦠 Mikrobiyoloji</option>
+                <option value="🩸 Patoloji">🩸 Patoloji</option>
+                <option value="💊 Farmakoloji">💊 Farmakoloji</option>
+                <option value="🩺 Dahiliye">🩺 Dahiliye</option>
+                <option value="👶 Pediatri">👶 Pediatri</option>
+                <option value="🔪 Genel Cerrahi">🔪 Genel Cerrahi</option>
+                <option value="🤰 Kadın Doğum">🤰 Kadın Doğum</option>
+                <option value="👁️ Küçük Stajlar">👁️ Küçük Stajlar</option>
             </select>
-            
             <select id="haftalikAksiyon">
                 <option value="▶️ Video İzleme">▶️ Video İzleme</option>
                 <option value="📖 Okuma">📖 Okuma</option>
                 <option value="📝 Çıkmış Soru">📝 Çıkmış Soru</option>
                 <option value="📚 Soru Bankası">📚 Soru Bankası</option>
             </select>
-            
-            <button onclick="haftayiPlanla()">Tüm Haftaya Uygula ve Düzenle</button>
+            <button onclick="haftayiPlanla()">Planı Oluştur</button>
         </div>
-
-        <div id="haftalikGorunum">
-            </div>
+        <div id="haftalikGorunum"></div>
     </div>
 
     <div id="ilerleme" class="tab-content">
-        <h3>Ders İlerleme Takibi</h3>
-        <div class="progress-grid" id="dersIlerlemeleri">
-            </div>
+        <div class="progress-grid" id="dersIlerlemeleri"></div>
+        
+        <div class="sync-area">
+            <h4>🔄 Cihazlar Arası Veri Aktarımı</h4>
+            <p style="font-size: 0.8rem;">Aşağıdaki kodu kopyalayıp diğer cihazınıza yapıştırarak senkronize olabilirsiniz.</p>
+            <button onclick="veriyiDisariAktar()" style="background:#636e72;">Veri Kodunu Kopyala</button>
+            <button onclick="veriyiIceriAktar()" style="background:#2d3436; margin-top: 5px;">Kod Yapıştırarak Veri Yükle</button>
+        </div>
     </div>
 
     <div id="kronometre" class="tab-content">
-        <div class="hafta-form" style="text-align: center;">
-            <h3>Odaklanma Sayacı</h3>
-            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
-                <div style="width: 40%;">
-                    <label style="font-weight: bold; color: #7f8c8d;">Çalışma (Dk)</label>
-                    <input type="number" id="calismaDk" value="50" style="text-align: center; font-size: 1.2rem;">
-                </div>
-                <div style="width: 40%;">
-                    <label style="font-weight: bold; color: #7f8c8d;">Mola (Dk)</label>
-                    <input type="number" id="molaDk" value="10" style="text-align: center; font-size: 1.2rem;">
-                </div>
+        <div style="text-align: center; background: white; padding: 20px; border-radius: 8px;">
+            <div style="display: flex; gap: 10px;">
+                <input type="number" id="calismaDk" value="50" onchange="timerSifirla()">
+                <span style="align-self:center;">dk</span>
             </div>
-
             <div class="timer-display" id="zamanGosterge">50:00</div>
-            
-            <div class="timer-controls">
-                <button class="btn-start" onclick="zamanlayiciBaslat()" style="padding: 15px; font-size: 1.1rem;">Başlat</button>
-                <button class="btn-stop" onclick="zamanlayiciDurdur()" style="padding: 15px; font-size: 1.1rem;">Durdur / Sıfırla</button>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="zamanlayiciBaslat()" style="background:var(--success);">Başlat</button>
+                <button onclick="zamanlayiciDurdur()" style="background:#e74c3c;">Dur/Sıfırla</button>
             </div>
-        </div>
-
-        <div class="total-time">
-            <strong>Bugün Toplam Çalışılan Süre:</strong><br>
-            <span id="toplamSureGosterge" style="font-size: 1.5rem; color: var(--success); font-weight: bold;">0 Saat 0 Dakika</span>
+            <div style="margin-top: 20px;">
+                <strong>Bugün Toplam:</strong> <span id="toplamSureGosterge" style="color:var(--success); font-weight:bold;">0 Saat 0 Dakika</span>
+            </div>
         </div>
     </div>
 
     <script>
-        // --- TEMEL VERİLER ---
-        const dersler = [
-            {id: "anatomi", ad: "Anatomi", emoji: "💀"},
-            {id: "fizyoloji", ad: "Fizyoloji-Histo-Embriyo", emoji: "🔬"},
-            {id: "biyokimya", ad: "Biyokimya", emoji: "🧪"},
-            {id: "mikrobiyoloji", ad: "Mikrobiyoloji", emoji: "🦠"},
-            {id: "patoloji", ad: "Patoloji", emoji: "🩸"},
-            {id: "farmakoloji", ad: "Farmakoloji", emoji: "💊"},
-            {id: "dahiliye", ad: "Dahiliye", emoji: "🩺"},
-            {id: "pediatri", ad: "Pediatri", emoji: "👶"},
-            {id: "cerrahi", ad: "Genel Cerrahi", emoji: "🔪"},
-            {id: "kadin-dogum", ad: "Kadın Doğum", emoji: "🤰"},
+        const dersListesi = [
+            {id: "anatomi", ad: "Anatomi", emoji: "💀"}, {id: "fizyoloji", ad: "Fizyoloji", emoji: "🔬"},
+            {id: "biyokimya", ad: "Biyokimya", emoji: "🧪"}, {id: "mikrobiyoloji", ad: "Mikrobiyoloji", emoji: "🦠"},
+            {id: "patoloji", ad: "Patoloji", emoji: "🩸"}, {id: "farmakoloji", ad: "Farmakoloji", emoji: "💊"},
+            {id: "dahiliye", ad: "Dahiliye", emoji: "🩺"}, {id: "pediatri", ad: "Pediatri", emoji: "👶"},
+            {id: "cerrahi", ad: "Genel Cerrahi", emoji: "🔪"}, {id: "kadin-dogum", ad: "Kadın Doğum", emoji: "🤰"},
             {id: "kucuk-stajlar", ad: "Küçük Stajlar", emoji: "👁️"}
         ];
-        const aksiyonlar = ["▶️ Video İzleme", "📖 Okuma", "📝 Çıkmış Soru", "📚 Soru Bankası"];
 
-        // --- SEKME MANTIĞI ---
         function openTab(tabName, btn) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
             btn.classList.add('active');
         }
 
-        // --- SEKME 1: PROGRAM MANTIĞI ---
+        // --- HAFTALIK PROGRAM ---
         function haftalariDoldur() {
             const select = document.getElementById('haftaSec');
-            // GÜNCELLEME: Başlangıç tarihini 4 Nisan 2026 Cumartesi yaptık
-            let baslangic = new Date('2026-04-04T00:00:00'); 
-            
-            for(let i=0; i<25; i++) {
-                let bitis = new Date(baslangic);
-                bitis.setDate(bitis.getDate() + 6); // +6 gün ekleyince tam bir sonraki Cuma gününe denk gelir
-                
-                let bsStr = baslangic.toLocaleDateString('tr-TR', {day: 'numeric', month: 'long'});
-                let btStr = bitis.toLocaleDateString('tr-TR', {day: 'numeric', month: 'long', year: 'numeric'});
-                
-                let text = `${bsStr} - ${btStr} Haftası`;
+            let baslangic = new Date('2026-04-04T00:00:00');
+            for(let i=0; i<20; i++) {
+                let bitis = new Date(baslangic); bitis.setDate(bitis.getDate() + 6);
+                let text = `${baslangic.toLocaleDateString('tr-TR', {day:'numeric', month:'short'})} - ${bitis.toLocaleDateString('tr-TR', {day:'numeric', month:'short'})}`;
                 select.innerHTML += `<option value="${baslangic.toISOString()}">${text}</option>`;
-                
-                baslangic.setDate(baslangic.getDate() + 7); // Sonraki Cumartesiye atla
+                baslangic.setDate(baslangic.getDate() + 7);
             }
         }
-        haftalariDoldur(); 
+        haftalariDoldur();
 
         function haftayiPlanla() {
-            const haftaVal = document.getElementById('haftaSec').value;
-            const dersSelect = document.getElementById('haftalikDers');
-            const dersAd = dersSelect.options[dersSelect.selectedIndex].text;
+            const ders = document.getElementById('haftalikDers').value;
             const aksiyon = document.getElementById('haftalikAksiyon').value;
-            
-            const gorunum = document.getElementById('haftalikGorunum');
-            gorunum.innerHTML = `<h3 style="margin-top: 30px; border-bottom: 2px solid #bdc3c7; padding-bottom: 10px;">Planlanan Hafta Detayı: <span style="color:var(--secondary);">${dersAd}</span></h3>`;
-            
-            let baslangic = new Date(haftaVal);
-            // GÜNCELLEME: Döngü dizilimini Cumartesi gününden başlatıyoruz
             const gunler = ["Cumartesi", "Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma"];
-            
-            for(let i=0; i<7; i++) {
-                let suankiGun = new Date(baslangic);
-                suankiGun.setDate(suankiGun.getDate() + i);
-                let tarihStr = suankiGun.toLocaleDateString('tr-TR', {day:'numeric', month:'short'});
-                
-                let selectHtml = `<select onchange="degisiklikYapildi(this)">`;
-                aksiyonlar.forEach(a => {
-                    let selected = a === aksiyon ? 'selected' : '';
-                    selectHtml += `<option value="${a}" ${selected}>${a}</option>`;
-                });
-                selectHtml += `</select>`;
-
-                gorunum.innerHTML += `
-                    <div class="hafta-gun-card">
-                        <div style="width: 50%;">
-                            <strong style="font-size: 1.1rem;">${gunler[i]}</strong> 
-                            <span style="color:#7f8c8d; font-size:0.9em; margin-left: 5px;">(${tarihStr})</span>
-                        </div>
-                        <div style="width: 45%;">
-                            ${selectHtml}
-                        </div>
-                    </div>
-                `;
-            }
+            let html = `<h3>${ders} Haftası</h3>`;
+            gunler.forEach(g => {
+                html += `<div class="hafta-gun-card"><strong>${g}</strong> 
+                        <select onchange="kaydet()"><option ${aksiyon.includes('Video')?'selected':''}>▶️ Video</option><option ${aksiyon.includes('Okuma')?'selected':''}>📖 Okuma</option><option ${aksiyon.includes('Çıkmış')?'selected':''}>📝 Çıkmış</option><option ${aksiyon.includes('Soru')?'selected':''}>📚 Soru Bankası</option></select></div>`;
+            });
+            document.getElementById('haftalikGorunum').innerHTML = html;
+            kaydet();
         }
 
-        // Gün bazında değişiklik yapıldığında görsel bildirim
-        function degisiklikYapildi(selectElem) {
-            selectElem.style.borderColor = "var(--success)";
-            selectElem.style.backgroundColor = "#e8f8f5";
-            selectElem.style.fontWeight = "bold";
-        }
-
-
-        // --- SEKME 2: İLERLEME MANTIĞI ---
+        // --- İLERLEME ---
         const ilerlemeDiv = document.getElementById('dersIlerlemeleri');
-        
-        dersler.forEach(ders => {
-            ilerlemeDiv.innerHTML += `
-                <div class="ders-card">
-                    <h4>${ders.emoji} ${ders.ad}</h4>
-                    <select id="${ders.id}-mod" onchange="modDegistir('${ders.id}')">
-                        <option value="seciniz">Çalışma Modu Seç...</option>
-                        <option value="fasikul">Fasikül Modu</option>
-                        <option value="sayfa">Sayfa Modu (Tek Kitap)</option>
-                    </select>
-                    <div id="${ders.id}-icerik"></div>
-                </div>
-            `;
+        dersListesi.forEach(d => {
+            ilerlemeDiv.innerHTML += `<div class="ders-card"><h4>${d.emoji} ${d.ad}</h4>
+                <input type="number" placeholder="Fasikül Sayısı" onchange="fasikulUret('${d.id}', this.value)">
+                <div id="${d.id}-liste"></div></div>`;
         });
 
-        function modDegistir(dersId) {
-            const mod = document.getElementById(dersId + '-mod').value;
-            const icerikDiv = document.getElementById(dersId + '-icerik');
-            
-            if (mod === 'fasikul') {
-                icerikDiv.innerHTML = `
-                    <div style="display:flex; gap:10px;">
-                        <input type="number" id="${dersId}-fasikulSayisi" placeholder="Kaç fasikül var?" style="margin:0; width:65%;">
-                        <button onclick="fasikulleriUret('${dersId}')" style="margin:0; width:35%; padding:10px;">Üret</button>
-                    </div>
-                    <div id="${dersId}-fasikulListesi" class="fasikul-list"></div>
-                `;
-            } else if (mod === 'sayfa') {
-                icerikDiv.innerHTML = `
-                    <input type="number" placeholder="Kaldığın sayfa numarası..." style="margin-top:5px;">
-                `;
-            } else {
-                icerikDiv.innerHTML = '';
-            }
-        }
-
-        function fasikulleriUret(dersId) {
-            const sayi = parseInt(document.getElementById(dersId + '-fasikulSayisi').value);
-            const listeDiv = document.getElementById(dersId + '-fasikulListesi');
-            
-            if (!sayi || sayi < 1) return;
-            
+        function fasikulUret(id, sayi) {
             let html = '';
             for(let i=1; i<=sayi; i++) {
-                html += `
-                    <label class="fasikul-item" id="lbl-${dersId}-${i}">
-                        <input type="checkbox" onchange="tiklaFasikul(this, 'lbl-${dersId}-${i}')"> 
-                        Fasikül ${i}
-                    </label>
-                `;
+                html += `<div class="fasikul-item" id="${id}-${i}" onclick="tikla('${id}-${i}')"><input type="checkbox"> Fasikül ${i}</div>`;
             }
-            listeDiv.innerHTML = html;
+            document.getElementById(id+'-liste').innerHTML = html;
+            kaydet();
         }
 
-        function tiklaFasikul(checkbox, labelId) {
-            const label = document.getElementById(labelId);
-            if(checkbox.checked) {
-                label.classList.add('completed');
-            } else {
-                label.classList.remove('completed');
-            }
+        function tikla(id) {
+            let el = document.getElementById(id);
+            let chk = el.querySelector('input');
+            chk.checked = !chk.checked;
+            el.classList.toggle('completed');
+            kaydet();
         }
 
-        // --- SEKME 3: KRONOMETRE MANTIĞI ---
-        let timerInterval;
-        let saniye = 0;
-        let dakikalar = 50;
-        let calisiyor = false;
-        let toplamCalisilanSaniye = 0;
-
+        // --- KRONOMETRE ---
+        let timer, calisiyor = false, saniye = 0, dakikalar = 50, toplamSaniye = 0;
+        function timerSifirla() { dakikalar = document.getElementById('calismaDk').value; saniye = 0; guncelleEkran(); }
         function guncelleEkran() {
-            const gosterilenDk = String(dakikalar).padStart(2, '0');
-            const gosterilenSn = String(saniye).padStart(2, '0');
-            document.getElementById('zamanGosterge').innerText = `${gosterilenDk}:${gosterilenSn}`;
-            
-            const toplamSaat = Math.floor(toplamCalisilanSaniye / 3600);
-            const toplamKalanDk = Math.floor((toplamCalisilanSaniye % 3600) / 60);
-            document.getElementById('toplamSureGosterge').innerText = `${toplamSaat} Saat ${toplamKalanDk} Dakika`;
+            document.getElementById('zamanGosterge').innerText = `${String(dakikalar).padStart(2,'0')}:${String(saniye).padStart(2,'0')}`;
+            document.getElementById('toplamSureGosterge').innerText = `${Math.floor(toplamSaniye/3600)} Saat ${Math.floor((toplamSaniye%3600)/60)} Dakika`;
         }
-
         function zamanlayiciBaslat() {
-            if (calisiyor) return;
-            calisiyor = true;
-            
-            if (dakikalar === 0 && saniye === 0) {
-                dakikalar = parseInt(document.getElementById('calismaDk').value);
-            }
-
-            timerInterval = setInterval(() => {
-                if (saniye === 0) {
-                    if (dakikalar === 0) {
-                        clearInterval(timerInterval);
-                        calisiyor = false;
-                        alert("Süren bitti! Mola vakti.");
-                        return;
-                    }
-                    dakikalar--;
-                    saniye = 59;
-                } else {
-                    saniye--;
-                }
-                
-                toplamCalisilanSaniye++;
-                guncelleEkran();
+            if(calisiyor) return; calisiyor = true;
+            timer = setInterval(() => {
+                if(saniye==0) { if(dakikalar==0) { clearInterval(timer); calisiyor=false; alert("Mola!"); return; } dakikalar--; saniye=59; }
+                else saniye--; 
+                toplamSaniye++; guncelleEkran(); if(toplamSaniye % 30 == 0) kaydet();
             }, 1000);
         }
+        function zamanlayiciDurdur() { clearInterval(timer); calisiyor=false; timerSifirla(); kaydet(); }
 
-        function zamanlayiciDurdur() {
-            clearInterval(timerInterval);
-            calisiyor = false;
-            dakikalar = parseInt(document.getElementById('calismaDk').value);
-            saniye = 0;
-            guncelleEkran();
+        // --- KAYIT SİSTEMİ ---
+        function kaydet() {
+            const veriler = {
+                program: document.getElementById('haftalikGorunum').innerHTML,
+                ilerleme: document.getElementById('dersIlerlemeleri').innerHTML,
+                toplamS: toplamSaniye
+            };
+            localStorage.setItem('tus_veri_haluk', JSON.stringify(veriler));
         }
 
-        document.getElementById('calismaDk').addEventListener('change', function() {
-            if(!calisiyor) {
-                dakikalar = parseInt(this.value) || 0;
-                saniye = 0;
+        function yukle() {
+            const veriStr = localStorage.getItem('tus_veri_haluk');
+            if(veriStr) {
+                const v = JSON.parse(veriStr);
+                document.getElementById('haftalikGorunum').innerHTML = v.program;
+                document.getElementById('dersIlerlemeleri').innerHTML = v.ilerleme;
+                toplamSaniye = v.toplamS || 0;
                 guncelleEkran();
             }
-        });
+        }
+
+        function veriyiDisariAktar() {
+            const veri = localStorage.getItem('tus_veri_haluk');
+            navigator.clipboard.writeText(veri);
+            alert("Tüm çalışma verilerin kod olarak kopyalandı! Bu kodu telefonuna gönderip oradaki uygulamaya yapıştırabilirsin.");
+        }
+
+        function veriyiIceriAktar() {
+            const kod = prompt("Diğer cihazdan aldığınız veri kodunu buraya yapıştırın:");
+            if(kod) {
+                localStorage.setItem('tus_veri_haluk', kod);
+                location.reload();
+            }
+        }
+
+        window.onload = yukle;
     </script>
 </body>
 </html>
